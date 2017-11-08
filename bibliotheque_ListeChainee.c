@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 #include <string.h>
-#include "headers/bibliotheque_ListeChainee.h"
+#include "bibliotheque_ListeChainee.h"
 
 Bibliotheque creer_bibliotheque(){
     Bibliotheque b = NULL;

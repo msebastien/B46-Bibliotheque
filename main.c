@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "headers/bibliotheque_ListeChainee.h"
+#include "bibliotheque_ListeChainee.h"
 
 int main()
 {
