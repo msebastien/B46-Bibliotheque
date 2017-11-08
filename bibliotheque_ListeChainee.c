@@ -8,6 +8,7 @@ Bibliotheque creer_bibliotheque(){
     Bibliotheque b = NULL;
     return b;
 }
+
 Bibliotheque inserer(Bibliotheque b, char* isbn, char* titre, char* auteur, char* editeur, char* datePublication)
 {
     //creation du maillon a inserer
@@ -43,17 +44,27 @@ Bibliotheque rechercher_livre(Bibliotheque b, char* isbn)
     }
     else
     {
-        b=NULL;//si isbn existe pas, il n'y a pas de livre correspondant
+        b=NULL; //si isbn existe pas, il n'y a pas de livre correspondant
     }
 
     return b;
 
 }
 
-Bibliotheque rechercher_titre(Bibliotheque b, char prefixe){
-    if(b != NULL){
-        
+Bibliotheque rechercher_titre(Bibliotheque b, char* prefixe){
+    Bibliotheque bi, resultat;
+    bi = b;
+    resultat = NULL;
+
+    if(bi != NULL){
+        while(bi != NULL){
+            if(strncmp(bi->titre, prefixe, strlen(prefixe)) == 0){
+                resultat = inserer(resultat, bi->isbn, bi->titre, bi->auteur, bi->editeur, bi->datePublication);
+            }
+            bi = bi->suivant;
+        }
     }
+    return resultat;
 }
 
 void detruire_bibliotheque(Bibliotheque b)

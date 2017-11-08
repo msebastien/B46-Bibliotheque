@@ -74,7 +74,7 @@ Bibliotheque rechercher_livre(Bibliotheque b, char* isbn);
 * @post La bibliothque existe
 * @invariant La bibliothque existe
 */
-Bibliotheque rechercher_titre(Bibliotheque b, char prefixe);
+Bibliotheque rechercher_titre(Bibliotheque b, char* prefixe);
 
 /**
 * @description Vide et detruit la bibliotheque

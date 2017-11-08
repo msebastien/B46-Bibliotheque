@@ -1,0 +1,17 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "taskName": "(GCC) Build Project",
+            "type": "shell",
+            "command": "gcc",
+            "args": [
+                "-Wall", "-g", "--std=c99", "-Iheaders/", "*.c"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}
