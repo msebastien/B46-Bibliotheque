@@ -59,8 +59,8 @@ Bibliotheque supprimer(Bibliotheque b, char* isbn);
 * @return Le livre et sa description
 *
 * @pre Tous les param�tres existent
-* @post La bibliothque existe
-* @invariant La bibliothque existe
+* @post La bibliotheque existe
+* @invariant La bibliotheque existe
 */
 Bibliotheque rechercher_livre(Bibliotheque b, char* isbn);
 
@@ -71,7 +71,7 @@ Bibliotheque rechercher_livre(Bibliotheque b, char* isbn);
 * @return Les livres dont le titre commence par le prefixe specifie
 *
 * @pre Tous les param�tres existent
-* @post La bibliothque existe
+* @post La bibliotheque existe
 * @invariant La bibliothque existe
 */
 Bibliotheque rechercher_titre(Bibliotheque b, char* prefixe);
