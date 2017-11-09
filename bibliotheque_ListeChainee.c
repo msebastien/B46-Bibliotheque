@@ -5,8 +5,7 @@
 #include "bibliotheque_ListeChainee.h"
 
 Bibliotheque creer_bibliotheque(){
-    Bibliotheque b = NULL;
-    return b;
+    return NULL;
 }
 
 Bibliotheque inserer(Bibliotheque b, char* isbn, char* titre, char* auteur, char* editeur, char* datePublication)
