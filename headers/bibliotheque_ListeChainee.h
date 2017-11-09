@@ -1,5 +1,5 @@
-#ifndef _BIBLIOTHEQUE_H_
-#define _BIBLIOTHEQUE_H_ 0
+#ifndef _BIBLIOTHEQUE_LISTE_CHAINEE_H_
+#define _BIBLIOTHEQUE_LISTE_CHAINEE_H_ 0
 
 
 struct MaillonSt {

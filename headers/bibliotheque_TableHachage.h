@@ -1,0 +1,5 @@
+#ifndef _BIBLIOTHEQUE_TABLE_HACHAGE_H_
+#define _BIBLIOTHEQUE_TABLE_HACHAGE_H_ 0
+
+
+#endif

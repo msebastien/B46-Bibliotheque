@@ -3,7 +3,7 @@
 
 #include "bibliotheque_ListeChainee.h"
 
-#define TAILLE_MAX 1000
+#define TAILLE_MAX 10000
 #define TAILLE_CHAMPS 200
 
 Bibliotheque genererBibliotheque(Bibliotheque b){
