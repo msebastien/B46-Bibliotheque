@@ -12,7 +12,7 @@ Bibliotheque inserer(Bibliotheque b, char* isbn, char* titre, char* auteur, char
 {
     //creation du maillon a inserer
     Bibliotheque nouveau_maillon;
-    nouveau_maillon=malloc(sizeof(struct BibliothequeSt));
+    nouveau_maillon=malloc(sizeof(struct MaillonSt));
     
     //initialisation de ses champs
     nouveau_maillon->isbn = copier_chaine(isbn);
@@ -75,9 +75,9 @@ Bibliotheque supprimer(Bibliotheque b, char* isbn)
 {
     Bibliotheque debut;
     debut=b;
-    if(b!=NULL)//si la chaine n'est pas deja vide
+    if(b!=NULL) //si la chaine n'est pas deja vide
     {
-        if(strcmp(b->isbn,isbn)==0)//si l'element a supprimer est en premiere position et la chaine est pas vide
+        if(strcmp(b->isbn,isbn)==0) //si l'element a supprimer est en premiere position et la chaine est pas vide
         {
 
             Bibliotheque sauvegardeTemporaire;
@@ -110,12 +110,7 @@ void detruire_bibliotheque(Bibliotheque b)
     if(b!=NULL)
     {
         detruire_bibliotheque(b->suivant);
-        free(b->isbn);
-        free(b->titre);
-        free(b->auteur);
-        free(b->datePublication);
-        free(b->editeur);
-        free(b);
+        liberer_memoire(b);
     }
 }
 
@@ -146,7 +141,7 @@ void afficher(Bibliotheque b)
 {
     if(b!=NULL)
     {
-        printf("isbn:%s\n\ttitre:%s\n\tauteur:%s\n\tediteur:%s\n\tdate de publication:%s\n",
+        printf("ISBN:%s\n\tTITRE:%s\n\tAUTEUR:%s\n\tEDITEUR:%s\n\tDATE PUBLICATION:%s\n",
                b->isbn,b->titre,b->auteur,b->editeur,b->datePublication);
     }
     else{

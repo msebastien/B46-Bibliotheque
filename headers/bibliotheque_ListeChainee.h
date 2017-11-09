@@ -2,16 +2,16 @@
 #define _BIBLIOTHEQUE_H_ 0
 
 
-struct BibliothequeSt {
+struct MaillonSt {
 	char* isbn;
 	char* titre;
 	char* auteur;
 	char* editeur;
 	char* datePublication;
-	struct BibliothequeSt* suivant;
+	struct MaillonSt* suivant;
 };
 
-typedef struct BibliothequeSt * Bibliotheque;
+typedef struct MaillonSt * Bibliotheque;
 
 /**
 * @description Cree une bibliotheque vide
