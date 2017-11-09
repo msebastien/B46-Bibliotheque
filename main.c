@@ -26,6 +26,12 @@ int main()
     b2 = rechercher_titre(b, "Sil");
     afficher_tout(b2);
 
+    // Test de supprimer()
+    Bibliotheque b3;
+    printf("Test supprimer\n");
+    b3 = supprimer(b, "456");
+    afficher_tout(b3);
+
     // Test detruire_bibliotheque()
     printf("Test detruire_bibliotheque\n");
     detruire_bibliotheque(b);

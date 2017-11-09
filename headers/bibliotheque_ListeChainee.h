@@ -86,8 +86,10 @@ Bibliotheque rechercher_titre(Bibliotheque b, char* prefixe);
 */
 void detruire_bibliotheque(Bibliotheque b);
 
+//------------------------------------------------------------
 char* copier_chaine(char* chaine_a_copier);
-
 void afficher(Bibliotheque b);
+Bibliotheque liberer_memoire(Bibliotheque b);
+int titre_deja_present(Bibliotheque b,char* titre);
 
 #endif
