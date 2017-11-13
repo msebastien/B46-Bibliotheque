@@ -1,16 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "bibliotheque_ListeChainee.h"
+//#include "bibliotheque_ListeChainee.h"
+//#include "bibliotheque_ArbreBinaire.h"
+#include "bibliotheque_TableHachage.h"
 
 #define TAILLE_MAX 10000
-#define TAILLE_CHAMPS 200
+#define TAILLE_CHAMPS 6000
 
 Bibliotheque genererBibliotheque(Bibliotheque b){
-    b = NULL;
     FILE* fichier = NULL;
-    fichier = fopen("B46_openlibrary_test.dat", "r+");
-    char entree[TAILLE_MAX] = "";
+    fichier = fopen("B46_openlibrary_test.dat", "r");
+    char entree[TAILLE_MAX];
 
 
     if (fichier != NULL)
@@ -59,7 +60,7 @@ Bibliotheque genererBibliotheque(Bibliotheque b){
             }
 
             b = inserer(b, isbn, titre, auteur, editeur, datePublication);
-             
+           
         }
    
     }
@@ -78,39 +79,52 @@ Bibliotheque genererBibliotheque(Bibliotheque b){
 int main()
 {
     Bibliotheque b;
-    b=NULL;
+    // Création d'une bibliotheque vide
+    b = creer_bibliotheque();
 
+    // Remplissage a partir des données du fichier
     b = genererBibliotheque(b);
     
-    // Test de inserer()
-    printf("Test inserer\n");
+   /*// Test de inserer()
+    printf("==Test inserer==\n");
     b=inserer(b,"123","Lotr","JRR","Cirdan","1954");
     b=inserer(b,"456","Silmarillon","Tolkien","Anfauglir","1937");
-    afficher_tout(b);
-
-    // Test de rechercher_livre()
+    afficher(b);*/
+    
+    /*// Test de rechercher_livre()
     Bibliotheque b1;
-    printf("Test rechercher_livre\n");
-    b1 = rechercher_livre(b,"123");
-    afficher(b1);
+    printf("==Test rechercher_livre==\n");
+    b1 = rechercher_livre(b,"1851664815");
+    afficher(b1);*/
 
-    // Test de rechercher_titre()
+    /*// Test de rechercher_titre()
     Bibliotheque b2;
-    printf("Test rechercher_titre\n");
-    b2 = rechercher_titre(b, "Sil");
-    afficher_tout(b2);
+    printf("==Test rechercher_titre==\n");
+    b2 = rechercher_titre(b, "Ero");
+    afficher(b2);*/
 
     // Test de supprimer()
     Bibliotheque b3;
-    printf("Test supprimer\n");
-    b3 = supprimer(b, "456");
-    afficher_tout(b3);
+    printf("==Test supprimer==\n");
+    b3 = supprimer(b, "1851664815");
 
-    // Test detruire_bibliotheque()
-    printf("Test detruire_bibliotheque\n");
+    // Le titre a-t-il bien ete supprime ?
+    b3 = rechercher_livre(b, "1851664815");
+    afficher(b3);
+/*
+    printf("==Test hachage()==\n");
+    printf("salut = %d\n", hachage("salut"));
+    printf("émile = %d\n", hachage("émile"));
+    printf("sébastien = %d\n", hachage("sébastien"));
+    printf("123 = %d\n", hachage("123"));
+    printf("456 = %d\n", hachage("456"));*/
+
+    /*// Test detruire_bibliotheque()
+    printf("==Test detruire_bibliotheque==\n");
     detruire_bibliotheque(b);
     b=NULL;
-    afficher_tout(b);
+    afficher_tout(b);*/
+    
 
     return 0;
 }

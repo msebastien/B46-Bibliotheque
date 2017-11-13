@@ -102,27 +102,35 @@ Bibliotheque supprimer(Bibliotheque b, char* isbn)
             }
         }
     }
-    return debut;//on retourne le debut de chaine;
+    return debut; //on retourne le debut de chaine;
 }
 
 void detruire_bibliotheque(Bibliotheque b)
 {
-    if(b!=NULL)
+	if(b!=NULL)
     {
-        detruire_bibliotheque(b->suivant);
-        liberer_memoire(b);
+        Bibliotheque temporaire;
+        while(b!=NULL)
+        {
+            temporaire=b->suivant;
+            liberer_memoire(b);
+            b=temporaire;
+        }
     }
 }
 
+//------------------------------------------------------------------------------------------
+// FONCTIONS ANNEXES
+//------------------------------------------------------------------------------------------
+
 void afficher_tout(Bibliotheque b)
 {
-    if(b!=NULL)
-    {
+    while(b != NULL){
         afficher(b);
-        afficher_tout(b->suivant);
+        b = b->suivant;
     }
-    else
-    {
+
+    if(b == NULL){
         afficher(b);
     }
 }
@@ -163,7 +171,7 @@ Bibliotheque liberer_memoire(Bibliotheque b)
     return NULL;
 }
 
-int titre_deja_present(Bibliotheque b,char* titre)
+int titre_deja_present(Bibliotheque b, char* titre)
 {
     int resultat=0;
 

@@ -88,8 +88,10 @@ void detruire_bibliotheque(Bibliotheque b);
 
 //------------------------------------------------------------
 char* copier_chaine(char* chaine_a_copier);
+void afficher_tout(Bibliotheque b);
 void afficher(Bibliotheque b);
 Bibliotheque liberer_memoire(Bibliotheque b);
 int titre_deja_present(Bibliotheque b,char* titre);
+int hachage(char* chaine);
 
 #endif
