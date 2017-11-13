@@ -149,7 +149,7 @@ Liste supprimer_doublon(Bibliotheque b, Liste l)
             int i;
             for(i=0;i<b->taille;i++)//on verifie que notre table de hachage ne contient pas le titre actuel de la liste
             {
-                if(titre_deja_present_dans_liste(b->table[i],l->titre))//si il le contient deja on coupe le for et on supprime
+                if(titre_deja_present_dans_liste(b->table[i],l->titre))//s'il le contient deja on coupe le for et on supprime
                 {
                     debut=supprimer_dans_liste(debut,l->isbn);
                 }
