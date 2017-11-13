@@ -6,7 +6,7 @@
 #include "bibliotheque_TableHachage.h"
 
 /**
-* @description Calcule un indice unique à partir d'une chaine de caractere unique
+* @description Calcule un indice à partir d'une chaine de caractere
 * @param (char*) chaine : Chaine de caractere
 * @return Retourne un indice utilisable pour la table de hachage (entier non signe)
 */
