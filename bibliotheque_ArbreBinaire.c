@@ -4,12 +4,34 @@
 
 #include "bibliotheque_ArbreBinaire.h"
 
-
+/**
+* @description Cree une bibliotheque vide
+*
+* @return Une bibliotheque vide
+*
+* @pre Aucune
+* @post Creation de la bibliotheque
+* @invariant Aucun
+*/
 Bibliotheque creer_bibliotheque()
 {
     return NULL;
 }
 
+/**
+* @description Insere un livre dans la bibliotheque
+* @param (Bibliotheque) b : Une bibliotheque
+*		 (char*) isbn : Numero d'ISBN
+*		 (char*) titre : titre du livre
+*		 (char*) auteur : Le ou les auteurs du livre
+*		 (char*) editeur : Le ou les editeurs du livre
+*		 (char*) datePublication : La date de publication du livre
+* @return La nouvelle bibliotheque obtenue
+*
+* @pre Tous les parametres existent
+* @post La bibliotheque avec le livre ajoute
+* @invariant La bibliotheque existe
+*/
 Bibliotheque inserer(Bibliotheque b, char* isbn, char* titre, char* auteur, char* editeur, char* datePublication)
 {
     Bibliotheque nouveau_maillon;
@@ -43,6 +65,16 @@ Bibliotheque inserer(Bibliotheque b, char* isbn, char* titre, char* auteur, char
     return nouveau_maillon;
 }
 
+/**
+* @description Supprimer un livre de la bibliotheque
+* @param (Bibliotheque) b : Une bibliotheque
+*		 (char*) isbn : Numero d'ISBN
+* @return La nouvelle bibliotheque obtenue
+*
+* @pre Tous les parametres existent.
+* @post La bibliotheque sans le livre qui a ete supprime
+* @invariant La bibliotheque existe
+*/
 Bibliotheque supprimer(Bibliotheque b,char* isbn)
 {
 
@@ -100,6 +132,16 @@ Bibliotheque supprimer(Bibliotheque b,char* isbn)
     return resultat;
 }
 
+/**
+* @description Rechercher un livre dans la bibliotheque
+* @param (Bibliotheque) b : Une bibliotheque
+*		 (char*) isbn : Numero d'ISBN
+* @return Le livre et sa description
+*
+* @pre Tous les parametres existent
+* @post La bibliotheque existe
+* @invariant La bibliotheque existe
+*/
 Bibliotheque rechercher_livre(Bibliotheque b,char* isbn)
 {
     
@@ -122,6 +164,16 @@ Bibliotheque rechercher_livre(Bibliotheque b,char* isbn)
     return b;
 }
 
+/**
+* @description Rechercher des livres par titre
+* @param (Bibliotheque) b : Une bibliotheque
+*		 (char) prefixe : Chaine de caractere par lequel un titre peut commencer
+* @return Les livres dont le titre commence par le prefixe specifie
+*
+* @pre Tous les parametres existent
+* @post La bibliotheque existe
+* @invariant La bibliotheque existe
+*/
 Bibliotheque rechercher_titre(Bibliotheque b,char* prefixe)
 {
     Bibliotheque resultat=NULL;
@@ -159,6 +211,11 @@ void detruire_bibliotheque(Bibliotheque b)
 // FONCTIONS ANNEXES
 //------------------------------------------------------------------------------------------
 
+/**
+* @description Affiche l'integralite d'un arbre binaire de recherche
+* @param (Bibliotheque) b : Une bibliotheque
+*
+*/
 void afficher_tout(Bibliotheque b)
 {
     if(b!=NULL)
@@ -178,6 +235,11 @@ void afficher_tout(Bibliotheque b)
     }
 }
 
+/**
+* @description Affiche un élément non-nul d'un arbre bianire de recherche
+* @param (Bibliotheque) b : Une bibliotheque
+*
+*/
 void afficher(Bibliotheque b)
 {
     if(b!=NULL)
@@ -190,6 +252,11 @@ void afficher(Bibliotheque b)
     }
 }
 
+/**
+* @description Libère la mémoire allouee à une bibliotheque
+* @param (Bibliotheque) b : Une bibliotheque
+* @return Une bibliotheque vide
+*/
 Bibliotheque liberer_memoire(Bibliotheque b)
 {
     if (b!=NULL)
@@ -206,6 +273,12 @@ Bibliotheque liberer_memoire(Bibliotheque b)
     return b;
 }
 
+/**
+* @description Insère un arbre (maillon + fils gauche et fils droit)
+* @param (Bibliotheque) b : Une bibliotheque
+*		 (Bibliotheque) a_inserer : Arbre à inserer
+* @return La nouvelle bibliotheque obtenue
+*/
 Bibliotheque inserer_arbre(Bibliotheque b,Bibliotheque a_inserer)
 {
     if(a_inserer!=NULL)
@@ -218,6 +291,11 @@ Bibliotheque inserer_arbre(Bibliotheque b,Bibliotheque a_inserer)
     return b;
 }
 
+/**
+* @description Verifie si un titre est déjà présent dans une bibliotheque
+* @param (char*) titre : Titre d'un livre
+* @return un booleen (1 si le titre d'un livre existe dans la bibliotheque, 0 dans le cas contraire)
+*/
 int titre_deja_present(Bibliotheque b,char* titre)
 {
     int resultat;
@@ -225,9 +303,9 @@ int titre_deja_present(Bibliotheque b,char* titre)
     {
         resultat=0;
     }
-    else if(strcmp(titre,b->titre)==0)//si il ya le titre
+    else if(strcmp(titre,b->titre)==0) //s'il y a le titre
     {
-        resultat=1;//oui il y a deja le titre
+        resultat=1; //oui il y a deja le titre
     }
     else
     {
@@ -247,6 +325,12 @@ int titre_deja_present(Bibliotheque b,char* titre)
     return resultat;
 }
 
+/**
+* @description Insère un maillon dans un arbre
+* @param (Bibliotheque) b : Une bibliotheque
+*		 (Bibliotheque) a_inserer : Arbre à inserer
+* @return La nouvelle bibliotheque obtenue
+*/
 Bibliotheque inserer_un_maillon(Bibliotheque b, Bibliotheque a_inserer)
 {
     if(a_inserer!=NULL)
@@ -257,8 +341,14 @@ Bibliotheque inserer_un_maillon(Bibliotheque b, Bibliotheque a_inserer)
     return b;
 }
 
-Bibliotheque copier_maillon(Bibliotheque a_copier,Bibliotheque copie)
-{//copie uniquement les valeurs du noeud
+/**
+* @description Copie les valeurs d'un noeud d'un arbre
+* @param (Bibliotheque) b : Bibliotheque du maillon a copier
+*		 (Bibliotheque) copie : Bibliotheque contenant la copie du maillon
+* @return La nouvelle bibliotheque obtenue
+*/
+Bibliotheque copier_maillon(Bibliotheque a_copier, Bibliotheque copie)
+{
     if(a_copier!=NULL&&copie==NULL)//on copie dans un nouveau noeud on ecrase pas de noeud
     {
         copie=malloc(sizeof(struct BibliothequeSt));
@@ -273,8 +363,13 @@ Bibliotheque copier_maillon(Bibliotheque a_copier,Bibliotheque copie)
     return copie;
 }
 
+/**
+* @description Cherche le noeud avec la valeur maximum
+* @param (Bibliotheque) b : Bibliotheque
+* @return Retourne le noeud avec le plus grand isbn contenu dans la bibliotheque
+*/
 Bibliotheque chercher_max(Bibliotheque b)
-//retourne le noeud avec le plus grand isbn contenu dans la bibliotheque
+
 {
     Bibliotheque resultat;
     if(b==NULL||b->fils_droit==NULL)//si on est sur le dernier noeud a droite
@@ -290,6 +385,11 @@ Bibliotheque chercher_max(Bibliotheque b)
     return resultat;
 }
 
+/**
+* @description Copie une chaine de caractere
+* @param (char*) chaine_a_copier : Chaine de caractere a copier
+* @return Retourne la copie de la chaine de caractere
+*/
 char* copier_chaine(char* chaine_a_copier)
 {
     char* copie;

@@ -26,7 +26,7 @@ Bibliotheque creer_bibliotheque(void);
 
 /**
 * @description Insere un livre dans la bibliotheque
-* @param (Biliotheque) b : Une bibliotheque
+* @param (Bibliotheque) b : Une bibliotheque
 *		 (char*) isbn : Numero d'ISBN
 *		 (char*) titre : titre du livre
 *		 (char*) auteur : Le ou les auteurs du livre
@@ -42,7 +42,7 @@ Bibliotheque inserer(Bibliotheque b, char* isbn, char* titre, char* auteur, char
 
 /**
 * @description Supprimer un livre de la bibliotheque
-* @param (Biliotheque) b : Une bibliotheque
+* @param (Bibliotheque) b : Une bibliotheque
 *		 (char*) isbn : Numero d'ISBN
 * @return La nouvelle bibliotheque obtenue
 *
@@ -54,7 +54,7 @@ Bibliotheque supprimer(Bibliotheque b, char* isbn);
 
 /**
 * @description Rechercher un livre dans la bibliotheque
-* @param (Biliotheque) b : Une bibliotheque
+* @param (Bibliotheque) b : Une bibliotheque
 *		 (char*) isbn : Numero d'ISBN
 * @return Le livre et sa description
 *
@@ -66,7 +66,7 @@ Bibliotheque rechercher_livre(Bibliotheque b, char* isbn);
 
 /**
 * @description Rechercher des livres par titre
-* @param (Biliotheque) b : Une bibliotheque
+* @param (Bibliotheque) b : Une bibliotheque
 *		 (char) prefixe : Chaine de caractere par lequel un titre peut commencer
 * @return Les livres dont le titre commence par le prefixe specifie
 *
@@ -78,7 +78,7 @@ Bibliotheque rechercher_titre(Bibliotheque b, char* prefixe);
 
 /**
 * @description Vide et detruit la bibliotheque
-* @param (Biliotheque) b : Une bibliotheque
+* @param (Bibliotheque) b : Une bibliotheque
 *
 * @pre La bibliotheque existe
 * @post La bibliotheque est vide et memoire desallouee

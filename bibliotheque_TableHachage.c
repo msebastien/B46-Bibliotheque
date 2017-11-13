@@ -5,6 +5,11 @@
 
 #include "bibliotheque_TableHachage.h"
 
+/**
+* @description Calcule un indice unique à partir d'une chaine de caractere unique
+* @param (char*) chaine : Chaine de caractere
+* @return Retourne un indice utilisable pour la table de hachage (entier non signe)
+*/
 unsigned int hachage(char* chaine){ // Hachage polynomial
 
     unsigned int h = 0, p=11111;
@@ -20,6 +25,15 @@ unsigned int hachage(char* chaine){ // Hachage polynomial
     return ((unsigned int)fabs(h) % p) % TAILLE_TABLE;
 }
 
+/**
+* @description Cree une bibliotheque vide
+*
+* @return Une bibliotheque vide
+*
+* @pre Aucune
+* @post Creation de la bibliotheque
+* @invariant Aucun
+*/
 Bibliotheque creer_bibliotheque(){
     Bibliotheque b;
     
@@ -35,6 +49,20 @@ Bibliotheque creer_bibliotheque(){
     return b;
 }
 
+/**
+* @description Insere un livre dans la bibliotheque
+* @param (Bibliotheque) b : Une bibliotheque
+*		 (char*) isbn : Numero d'ISBN
+*		 (char*) titre : titre du livre
+*		 (char*) auteur : Le ou les auteurs du livre
+*		 (char*) editeur : Le ou les editeurs du livre
+*		 (char*) datePublication : La date de publication du livre
+* @return La nouvelle bibliotheque obtenue
+*
+* @pre Tous les parametres existent
+* @post La bibliotheque avec le livre ajoute
+* @invariant La bibliotheque existe
+*/
 Bibliotheque inserer(Bibliotheque b, char* isbn, char* titre, char* auteur, char* editeur, char* datePublication){
         int indice = hachage(isbn);
         
@@ -44,6 +72,16 @@ Bibliotheque inserer(Bibliotheque b, char* isbn, char* titre, char* auteur, char
     return b;
 }
 
+/**
+* @description Rechercher un livre dans la bibliotheque
+* @param (Bibliotheque) b : Une bibliotheque
+*		 (char*) isbn : Numero d'ISBN
+* @return Le livre et sa description
+*
+* @pre Tous les parametres existent
+* @post La bibliotheque existe
+* @invariant La bibliotheque existe
+*/
 Bibliotheque rechercher_livre(Bibliotheque b, char* isbn){
     Bibliotheque resultat;
     resultat = creer_bibliotheque();
@@ -57,6 +95,16 @@ Bibliotheque rechercher_livre(Bibliotheque b, char* isbn){
     return resultat;
 }
 
+/**
+* @description Rechercher des livres par titre
+* @param (Bibliotheque) b : Une bibliotheque
+*		 (char) prefixe : Chaine de caractere par lequel un titre peut commencer
+* @return Les livres dont le titre commence par le prefixe specifie
+*
+* @pre Tous les parametres existent
+* @post La bibliotheque existe
+* @invariant La bibliotheque existe
+*/
 Bibliotheque rechercher_titre(Bibliotheque b, char* prefixe){
     Bibliotheque resultat;
     int i;
@@ -75,6 +123,16 @@ Bibliotheque rechercher_titre(Bibliotheque b, char* prefixe){
     return resultat;
 }
 
+/**
+* @description Supprimer un livre de la bibliotheque
+* @param (Bibliotheque) b : Une bibliotheque
+*		 (char*) isbn : Numero d'ISBN
+* @return La nouvelle bibliotheque obtenue
+*
+* @pre Tous les parametres existent.
+* @post La bibliotheque sans le livre qui a ete supprime
+* @invariant La bibliotheque existe
+*/
 Bibliotheque supprimer(Bibliotheque b, char* isbn){
     unsigned int h = hachage(isbn);
     if(b!=NULL){
@@ -83,6 +141,14 @@ Bibliotheque supprimer(Bibliotheque b, char* isbn){
     return b;
 }
 
+/**
+* @description Vide et detruit la bibliotheque
+* @param (Bibliotheque) b : Une bibliotheque
+*
+* @pre La bibliotheque existe
+* @post La bibliotheque est vide et memoire desallouee
+* @invariant Aucun.
+*/
 void detruire_bibliotheque(Bibliotheque b)
 {
     if(b!=NULL)
@@ -105,6 +171,12 @@ void detruire_bibliotheque(Bibliotheque b)
 // FONCTIONS ANNEXES + REUTILISATION FONCTIONS LISTES CHAINEES
 //------------------------------------------------------------------------------------------
 
+/**
+* @description Supprimer un livre d'une liste
+* @param (Liste) l : Une liste
+*		 (char*) isbn : Numero d'ISBN
+* @return La nouvelle liste obtenue
+*/
 Liste supprimer_dans_liste(Liste l, char* isbn)
 {
     Liste debut;
@@ -136,9 +208,15 @@ Liste supprimer_dans_liste(Liste l, char* isbn)
             }
         }
     }
-    return debut;//on retourne le debut de chaine;
+    return debut; //on retourne le debut de chaine;
 }
 
+/**
+* @description Supprimer les doublons d'un livre d'une liste (Sous-fonction de rechercher_titre)
+* @param (Bibliotheque) b : Une bibliotheque (table de hachage)
+*		 (Liste) l : Une liste
+* @return La nouvelle liste obtenue
+*/
 Liste supprimer_doublon(Bibliotheque b, Liste l)
 {
     Liste debut=l;
@@ -160,6 +238,12 @@ Liste supprimer_doublon(Bibliotheque b, Liste l)
     return debut;
 }
 
+/**
+* @description Recherche les titres débutant par un prefixe specifique dans une liste
+* @param (Liste l : Une liste
+*		 (char*) prefixe : Chaine de caractere
+* @return Une nouvelle liste
+*/
 Liste rechercher_titre_dans_liste(Liste l, char* prefixe){
     Liste resultat;
     resultat=NULL;
@@ -171,7 +255,7 @@ Liste rechercher_titre_dans_liste(Liste l, char* prefixe){
             if(strncmp(l->titre, prefixe, strlen(prefixe)*sizeof(char)) == 0 && !titre_deja_present_dans_liste(resultat,l->titre))
                 // si le prefixe est le meme et que le titre n'existe pas deja dans notre selection
             {
-                resultat=inserer_dans_liste(resultat,l->isbn,l->titre,l->auteur,l->editeur,l->datePublication);
+                resultat = inserer_dans_liste(resultat,l->isbn,l->titre,l->auteur,l->editeur,l->datePublication);
             }
             l=l->suivant;
         }
@@ -180,6 +264,16 @@ Liste rechercher_titre_dans_liste(Liste l, char* prefixe){
     return resultat;
 }
 
+/**
+* @description Insere un livre dans une liste
+* @param (Liste) l : Une liste
+*		 (char*) isbn : Numero d'ISBN
+*		 (char*) titre : titre du livre
+*		 (char*) auteur : Le ou les auteurs du livre
+*		 (char*) editeur : Le ou les editeurs du livre
+*		 (char*) datePublication : La date de publication du livre
+* @return La nouvelle liste obtenue
+*/
 Liste inserer_dans_liste(Liste l, char* isbn, char* titre, char* auteur, char* editeur, char* datePublication){
     //creation du maillon a inserer
     Liste nouveau_maillon;
@@ -203,6 +297,11 @@ Liste inserer_dans_liste(Liste l, char* isbn, char* titre, char* auteur, char* e
 
 }
 
+/**
+* @description Libere tous les elements d'une liste (Met tous les maillons à NULL)
+* @param (Liste) l : Une liste
+* @return La nouvelle liste obtenue
+*/
 void detruire_Liste(Liste l){
     if(l!=NULL)
     {
@@ -217,6 +316,12 @@ void detruire_Liste(Liste l){
     }
 }
 
+/**
+* @description Rechercher un livre dans une liste
+* @param (Liste) l : Une liste
+*		 (char*) isbn : Numero d'ISBN
+* @return Liste des livres trouves
+*/
 Liste rechercher_livre_dans_liste(Liste l, char* isbn)
 {
     if(isbn!=NULL)//on verifie l'existence de l'isbn
@@ -235,6 +340,11 @@ Liste rechercher_livre_dans_liste(Liste l, char* isbn)
 
 }
 
+/**
+* @description Copie une chaine de caractere
+* @param (char*) chaine_a_copier : Chaine de caractere a copier
+* @return Retourne la copie de la chaine de caractere
+*/
 char* copier_chaine(char* chaine_a_copier)
 {
     char* copie;
@@ -245,6 +355,11 @@ char* copier_chaine(char* chaine_a_copier)
     return copie;
 }
 
+/**
+* @description Affiche l'integralite d'une table de hachage
+* @param (Bibliotheque) b : Une bibliotheque
+*
+*/
 void afficher_tout(Bibliotheque b){
     if(b != NULL){
         for(int i=0; i < b->taille; i++){
@@ -256,6 +371,11 @@ void afficher_tout(Bibliotheque b){
     }
 }
 
+/**
+* @description Affiche un élément non-nul d'une table de hachage
+* @param (Bibliotheque) b : Une bibliotheque
+*
+*/
 void afficher(Bibliotheque b){
     if(b != NULL)
     {
@@ -273,6 +393,11 @@ void afficher(Bibliotheque b){
     
 }
 
+/**
+* @description Affiche l'integralite d'une liste chainee
+* @param (Liste) l : Une liste chainee
+*
+*/
 void afficherListe_tout(Liste l)
 {
     if(l!=NULL)
@@ -286,6 +411,11 @@ void afficherListe_tout(Liste l)
     }
 }
 
+/**
+* @description Affiche un element d'une liste chainee
+* @param (Liste) l : Une liste chainee
+*
+*/
 void afficherListeElement(Liste l)
 {
     if(l!=NULL)
@@ -298,6 +428,11 @@ void afficherListeElement(Liste l)
     }
 }
 
+/**
+* @description Libère la mémoire allouee à une liste
+* @param (Liste) l : Une liste chainee
+* @return Une liste vide
+*/
 Liste liberer_memoire(Liste l)
 {
     if(l!=NULL)
@@ -312,6 +447,11 @@ Liste liberer_memoire(Liste l)
     return NULL;
 }
 
+/**
+* @description Verifie si un titre est déjà présent dans une liste
+* @param (char*) titre : Titre d'un livre
+* @return un booleen (1 si le titre d'un livre existe dans la liste, 0 dans le cas contraire)
+*/
 int titre_deja_present_dans_liste(Liste l, char* titre){
     int resultat=0;
 
@@ -330,6 +470,11 @@ int titre_deja_present_dans_liste(Liste l, char* titre){
     return resultat;
 }
 
+/**
+* @description Verifie si un titre est déjà présent dans une bibliotheque
+* @param (char*) titre : Titre d'un livre
+* @return un booleen (1 si le titre d'un livre existe dans la bibliotheque, 0 dans le cas contraire)
+*/
 int titre_deja_present(Bibliotheque b,char* titre){ //savoir si le titre est deja inclus dans la table
     int deja_present=0;
     if(b!=NULL)
