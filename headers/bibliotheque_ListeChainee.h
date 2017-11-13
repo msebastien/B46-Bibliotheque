@@ -46,9 +46,9 @@ Bibliotheque inserer(Bibliotheque b, char* isbn, char* titre, char* auteur, char
 *		 (char*) isbn : Numero d'ISBN
 * @return La nouvelle bibliotheque obtenue
 *
-* @pre Tous les param�tres existent.
+* @pre Tous les parametres existent.
 * @post La bibliotheque sans le livre qui a ete supprime
-* @invariant Aucun.
+* @invariant La bibliotheque existe
 */
 Bibliotheque supprimer(Bibliotheque b, char* isbn);
 
@@ -58,7 +58,7 @@ Bibliotheque supprimer(Bibliotheque b, char* isbn);
 *		 (char*) isbn : Numero d'ISBN
 * @return Le livre et sa description
 *
-* @pre Tous les param�tres existent
+* @pre Tous les parametres existent
 * @post La bibliotheque existe
 * @invariant La bibliotheque existe
 */
@@ -70,9 +70,9 @@ Bibliotheque rechercher_livre(Bibliotheque b, char* isbn);
 *		 (char) prefixe : Chaine de caractere par lequel un titre peut commencer
 * @return Les livres dont le titre commence par le prefixe specifie
 *
-* @pre Tous les param�tres existent
+* @pre Tous les parametres existent
 * @post La bibliotheque existe
-* @invariant La bibliothque existe
+* @invariant La bibliotheque existe
 */
 Bibliotheque rechercher_titre(Bibliotheque b, char* prefixe);
 
@@ -82,7 +82,7 @@ Bibliotheque rechercher_titre(Bibliotheque b, char* prefixe);
 *
 * @pre La bibliotheque existe
 * @post La bibliotheque est vide et memoire desallouee
-* @invariant Aucun
+* @invariant Aucun.
 */
 void detruire_bibliotheque(Bibliotheque b);
 

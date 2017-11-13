@@ -85,23 +85,23 @@ int main()
     // Remplissage a partir des données du fichier
     b = genererBibliotheque(b);
     
-   /*// Test de inserer()
+   // Test de inserer()
     printf("==Test inserer==\n");
     b=inserer(b,"123","Lotr","JRR","Cirdan","1954");
     b=inserer(b,"456","Silmarillon","Tolkien","Anfauglir","1937");
-    afficher(b);*/
+    afficher_tout(b);
     
-    /*// Test de rechercher_livre()
+    // Test de rechercher_livre()
     Bibliotheque b1;
     printf("==Test rechercher_livre==\n");
     b1 = rechercher_livre(b,"1851664815");
-    afficher(b1);*/
+    afficher(b1);
 
-    /*// Test de rechercher_titre()
+    // Test de rechercher_titre()
     Bibliotheque b2;
     printf("==Test rechercher_titre==\n");
     b2 = rechercher_titre(b, "Ero");
-    afficher(b2);*/
+    afficher(b2);
 
     // Test de supprimer()
     Bibliotheque b3;
@@ -119,11 +119,11 @@ int main()
     printf("123 = %d\n", hachage("123"));
     printf("456 = %d\n", hachage("456"));*/
 
-    /*// Test detruire_bibliotheque()
+    // Test detruire_bibliotheque()
     printf("==Test detruire_bibliotheque==\n");
     detruire_bibliotheque(b);
     b=NULL;
-    afficher_tout(b);*/
+    afficher_tout(b);
     
 
     return 0;

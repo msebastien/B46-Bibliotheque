@@ -54,9 +54,9 @@ Bibliotheque inserer(Bibliotheque b, char* isbn, char* titre, char* auteur, char
 *		 (char*) isbn : Numero d'ISBN
 * @return La nouvelle bibliotheque obtenue
 *
-* @pre Tous les param�tres existent.
+* @pre Tous les parametres existent.
 * @post La bibliotheque sans le livre qui a ete supprime
-* @invariant Aucun.
+* @invariant La bibliotheque existe
 */
 Bibliotheque supprimer(Bibliotheque b, char* isbn);
 
