@@ -23,7 +23,7 @@ unsigned int hachage(char* chaine){ // Hachage polynomial
     }
 
     // Etape 2 - Compression pour avoir un nombre compris entre 0 et TAILLE_TABLE pour servir d'indice à la table
-    return ((unsigned int)fabs(h) % p) % TAILLE_TABLE;
+    return (h % p) % TAILLE_TABLE;
 }
 
 
