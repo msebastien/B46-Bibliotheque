@@ -1,17 +1,19 @@
 #ifndef _BIBLIOTHEQUE_LISTE_CHAINEE_H_
+
 #define _BIBLIOTHEQUE_LISTE_CHAINEE_H_ 0
 
 
 struct MaillonSt {
 	char* isbn;
+
 	char* titre;
 	char* auteur;
 	char* editeur;
 	char* datePublication;
 	struct MaillonSt* suivant;
 };
-
 typedef struct MaillonSt * Bibliotheque;
+
 
 /**
 * @description Cree une bibliotheque vide
@@ -23,6 +25,7 @@ typedef struct MaillonSt * Bibliotheque;
 * @invariant Aucun
 */
 Bibliotheque creer_bibliotheque(void);
+
 
 /**
 * @description Insere un livre dans la bibliotheque
@@ -40,6 +43,7 @@ Bibliotheque creer_bibliotheque(void);
 */
 Bibliotheque inserer(Bibliotheque b, char* isbn, char* titre, char* auteur, char* editeur, char* datePublication);
 
+
 /**
 * @description Supprimer un livre de la bibliotheque
 * @param (Bibliotheque) b : Une bibliotheque
@@ -51,6 +55,7 @@ Bibliotheque inserer(Bibliotheque b, char* isbn, char* titre, char* auteur, char
 * @invariant La bibliotheque existe
 */
 Bibliotheque supprimer(Bibliotheque b, char* isbn);
+
 
 /**
 * @description Rechercher un livre dans la bibliotheque
@@ -64,6 +69,7 @@ Bibliotheque supprimer(Bibliotheque b, char* isbn);
 */
 Bibliotheque rechercher_livre(Bibliotheque b, char* isbn);
 
+
 /**
 * @description Rechercher des livres par titre
 * @param (Bibliotheque) b : Une bibliotheque
@@ -76,6 +82,7 @@ Bibliotheque rechercher_livre(Bibliotheque b, char* isbn);
 */
 Bibliotheque rechercher_titre(Bibliotheque b, char* prefixe);
 
+
 /**
 * @description Vide et detruit la bibliotheque
 * @param (Bibliotheque) b : Une bibliotheque
@@ -87,11 +94,13 @@ Bibliotheque rechercher_titre(Bibliotheque b, char* prefixe);
 void detruire_bibliotheque(Bibliotheque b);
 
 //------------------------------------------------------------
+
 char* copier_chaine(char* chaine_a_copier);
 void afficher_tout(Bibliotheque b);
 void afficher(Bibliotheque b);
 Bibliotheque liberer_memoire(Bibliotheque b);
 int titre_deja_present(Bibliotheque b,char* titre);
-int hachage(char* chaine);
+Bibliotheque copier_maillon(Bibliotheque a_copier,Bibliotheque copie);
+
 
 #endif

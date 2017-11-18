@@ -1,14 +1,16 @@
 #ifndef _BIBLIOTHEQUE_TABLE_HACHAGE_H_
+
 #define _BIBLIOTHEQUE_TABLE_HACHAGE_H_ 2
 
 #define TAILLE_TABLE 100000
 
 struct MaillonSt {
 	char* isbn; // Clefs
-	
+
 	char* titre; // Valeurs
 	char* auteur;
 	char* editeur;
+
 	char* datePublication;
 	struct MaillonSt* suivant;
 };
@@ -32,6 +34,7 @@ typedef struct BibliothequeSt * Bibliotheque;
 */
 Bibliotheque creer_bibliotheque(void);
 
+
 /**
 * @description Insere un livre dans la bibliotheque
 * @param (Biliotheque) b : Une bibliotheque
@@ -48,6 +51,8 @@ Bibliotheque creer_bibliotheque(void);
 */
 Bibliotheque inserer(Bibliotheque b, char* isbn, char* titre, char* auteur, char* editeur, char* datePublication);
 
+
+
 /**
 * @description Supprimer un livre de la bibliotheque
 * @param (Biliotheque) b : Une bibliotheque
@@ -60,6 +65,8 @@ Bibliotheque inserer(Bibliotheque b, char* isbn, char* titre, char* auteur, char
 */
 Bibliotheque supprimer(Bibliotheque b, char* isbn);
 
+
+
 /**
 * @description Rechercher un livre dans la bibliotheque
 * @param (Biliotheque) b : Une bibliotheque
@@ -70,7 +77,10 @@ Bibliotheque supprimer(Bibliotheque b, char* isbn);
 * @post La bibliotheque existe
 * @invariant La bibliotheque existe
 */
+
 Bibliotheque rechercher_livre(Bibliotheque b, char* isbn);
+
+
 
 /**
 * @description Rechercher des livres par titre
@@ -84,6 +94,8 @@ Bibliotheque rechercher_livre(Bibliotheque b, char* isbn);
 */
 Bibliotheque rechercher_titre(Bibliotheque b, char* prefixe);
 
+
+
 /**
 * @description Vide et detruit la bibliotheque
 * @param (Biliotheque) b : Une bibliotheque
@@ -95,7 +107,9 @@ Bibliotheque rechercher_titre(Bibliotheque b, char* prefixe);
 void detruire_bibliotheque(Bibliotheque b);
 
 //--------------------------------------------------
+
 unsigned int hachage(char* chaine);
+
 Liste inserer_dans_liste(Liste l, char* isbn, char* titre, char* auteur, char* editeur, char* datePublication);
 Liste supprimer_dans_liste(Liste l, char* isbn);
 Liste supprimer_doublon(Bibliotheque b, Liste l);
@@ -115,5 +129,6 @@ void afficher(Bibliotheque b);
 void afficher_tout(Bibliotheque b);
 void afficherListeElement(Liste l);
 void afficherListe_tout(Liste l);
+Liste copier_maillon(Liste a_copier,Liste copie);
 
 #endif

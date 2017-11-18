@@ -1,9 +1,11 @@
 #ifndef BIBLIOTHEQUE_ARBREBINAIRE_H_
+
 #define BIBLIOTHEQUE_ARBREBINAIRE_H_ 1
 
 
 struct BibliothequeSt {
 	char* isbn;
+
 	char* titre;
 	char* auteur;
 	char* editeur;
@@ -11,8 +13,8 @@ struct BibliothequeSt {
 	struct BibliothequeSt* fils_gauche;
 	struct BibliothequeSt* fils_droit;
 };
-
 typedef struct BibliothequeSt* Bibliotheque;
+
 
 /**
 * @description Cree une bibliotheque vide
@@ -25,6 +27,7 @@ typedef struct BibliothequeSt* Bibliotheque;
 */
 Bibliotheque creer_bibliotheque(void);
 
+
 /**
 * @description Insere un livre dans la bibliotheque
 * @param (Biliotheque) b : Une bibliotheque
@@ -35,11 +38,12 @@ Bibliotheque creer_bibliotheque(void);
 *		 (char*) datePublication : La date de publication du livre
 * @return La nouvelle bibliotheque obtenue
 *
-* @pre Tous les param�tres existent
+* @pre Tous les parametres existent
 * @post La bibliotheque avec le livre ajoute
 * @invariant La bibliotheque existe
 */
 Bibliotheque inserer(Bibliotheque b, char* isbn, char* titre, char* auteur, char* editeur, char* datePublication);
+
 
 /**
 * @description Supprimer un livre de la bibliotheque
@@ -53,6 +57,7 @@ Bibliotheque inserer(Bibliotheque b, char* isbn, char* titre, char* auteur, char
 */
 Bibliotheque supprimer(Bibliotheque b, char* isbn);
 
+
 /**
 * @description Rechercher un livre dans la bibliotheque
 * @param (Biliotheque) b : Une bibliotheque
@@ -64,6 +69,7 @@ Bibliotheque supprimer(Bibliotheque b, char* isbn);
 * @invariant La bibliothque existe
 */
 Bibliotheque rechercher_livre(Bibliotheque b, char* isbn);
+
 
 /**
 * @description Rechercher des livres par titre
@@ -77,6 +83,7 @@ Bibliotheque rechercher_livre(Bibliotheque b, char* isbn);
 */
 Bibliotheque rechercher_titre(Bibliotheque b, char* prefixe);
 
+
 /**
 * @description Vide et detruit la bibliotheque
 * @param (Biliotheque) b : Une bibliotheque
@@ -87,6 +94,7 @@ Bibliotheque rechercher_titre(Bibliotheque b, char* prefixe);
 */
 void detruire_bibliotheque(Bibliotheque b);
 
+
 //--------------------------------------------------------------------------------------------
 
 // Fais tous les Free() necessaires pour liberer un maillon
@@ -94,12 +102,13 @@ Bibliotheque liberer_memoire(Bibliotheque b);
 
 int titre_deja_present(Bibliotheque b,char* titre);
 
+Bibliotheque supprimer_doublon(Bibliotheque auxiliaire,Bibliotheque originale);
+
 Bibliotheque inserer_un_maillon(Bibliotheque b, Bibliotheque a_inserer);
 
 char* copier_chaine(char* chaine_a_copier);
 
 void afficher(Bibliotheque b);
-
 void afficher_tout(Bibliotheque b);
 
 Bibliotheque chercher_max(Bibliotheque b);
@@ -109,5 +118,3 @@ Bibliotheque copier_maillon(Bibliotheque a_copier,Bibliotheque copie);
 Bibliotheque inserer_arbre(Bibliotheque b,Bibliotheque a_inserer);
 
 #endif
-
-
