@@ -117,4 +117,9 @@ Bibliotheque copier_maillon(Bibliotheque a_copier,Bibliotheque copie);
 
 Bibliotheque inserer_arbre(Bibliotheque b,Bibliotheque a_inserer);
 
+int nombre_de_noeuds(Bibliotheque b);
+void afficher_stats_arbreBinaire(Bibliotheque b);
+int taille_arbre(Bibliotheque b);
+int nbr_noeud_totaux(Bibliotheque b);
+
 #endif

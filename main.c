@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "bibliotheque_ListeChainee.h"
-//#include "bibliotheque_ArbreBinaire.h"
+//#include "bibliotheque_ListeChainee.h"
+#include "bibliotheque_ArbreBinaire.h"
 //#include "bibliotheque_TableHachage.h"
 
 #define TAILLE_MAX 10000
@@ -88,7 +88,11 @@ int main()
     // Test de inserer()
     printf("==Test inserer==\n");
     b=inserer(b,"456","The Lord of the rings location guidebook","Tolkien","Anfauglir","1937");
+    b=inserer(b,"789", "Le bon et le mauvais chasseur","Les inconnus","FranceLivre","1992");
     b=inserer(b,"123", "The Lord of the rings location guidebook","JRR","Cirdan","1954");
+
+    // Statistiques pour l'arbre binaire uniquement
+    //afficher_stats_arbreBinaire(b);
 
     // Test de rechercher_titre()
     Bibliotheque b2;
@@ -100,6 +104,7 @@ int main()
     printf("==Test supprimer==\n");
     b = supprimer(b, "1869504526");
     b = supprimer(b, "123");
+    b = supprimer(b, "456");
 
     // Test de rechercher_livre()
     Bibliotheque b1; 
@@ -110,12 +115,16 @@ int main()
     b1 = rechercher_livre(b,"1851664815");
     afficher_tout(b1);
     
-    b1 = rechercher_livre(b,"456");
+    b1 = rechercher_livre(b,"789");
     afficher_tout(b1);
     
-    // Les livres ont-ils bien ete supprimes ? -> b3 doit valoir NULL et donc rien ne doit s'afficher
+    // Les livres ont-ils bien ete supprimes ? -> rien ne doit s'afficher
+    b1 = rechercher_livre(b,"456");
+    afficher_tout(b1);
+
     b1 = rechercher_livre(b, "123");
     afficher_tout(b1);
+
     b1 = rechercher_livre(b,"1869504526");
     afficher_tout(b1);
 
@@ -124,6 +133,8 @@ int main()
     detruire_bibliotheque(b);
     b=NULL;
     afficher_tout(b);
+
+    printf("\nFIN DU TEST.\n");
     
     return 0;
 }

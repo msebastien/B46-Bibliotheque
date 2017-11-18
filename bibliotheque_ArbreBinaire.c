@@ -22,7 +22,6 @@ Bibliotheque creer_bibliotheque()
 
 
 /**
-
 * @description Insere un livre dans la bibliotheque
 * @param (Bibliotheque) b : Une bibliotheque
 *		 (char*) isbn : Numero d'ISBN
@@ -277,7 +276,7 @@ void afficher(Bibliotheque b)
 {
     if(b!=NULL)
     {
-        printf("isbn:%s\n\ttitre:%s\n\tauteur:%s\n\tediteur:%s\n\tdate de publication:%s\n",
+        printf("ISBN:%s\n\tTITRE:%s\n\tAUTEUR:%s\n\tEDITEUR:%s\n\tDATE PUBLICATION:%s\n",
                b->isbn,b->titre,b->auteur,b->editeur,b->datePublication);
     }
     else{
@@ -442,5 +441,61 @@ char* copier_chaine(char* chaine_a_copier)
     strcpy(copie,chaine_a_copier);
 
     return copie;
+}
+
+//-------------------------------------------------------
+//  STATS
+//------------------------------------------------------
+
+int nombre_de_noeuds(Bibliotheque b)
+{
+    int i=1;
+    if(b!=NULL)
+    {
+        i+=nombre_de_noeuds(b->fils_droit);
+    }
+    return i;
+}
+
+void afficher_stats_arbreBinaire(Bibliotheque b)
+{
+    int nbr_noeud=nbr_noeud_totaux(b);
+    printf("\nNombre de noeuds au total:%d",nbr_noeud);
+    printf("\nTaille arbre:%d\n",taille_arbre(b));
+}
+
+/**
+* @description Calcule la hauteur d'un arbre binaire de recherche (ABR)
+* @param (Bibliotheque) b: Une bibliotheque implementee par un ABR
+* @return Retourne la hauteur de l'arbre 
+*/
+int taille_arbre(Bibliotheque b)
+{
+    int i=0;
+    if(b!=NULL)
+    {
+        i=1;
+        int gauche=taille_arbre(b->fils_gauche);
+        int droit=taille_arbre(b->fils_droit);
+        i+=gauche>droit?gauche:droit;
+    }
+    return i;
+}
+
+/**
+* @description Calcule le nombre total de noeuds d'un arbre binaire de recherche (ABR)
+* @param (Bibliotheque) b: Une bibliotheque implementee par un ABR
+* @return Retourne le nombre total de noeuds
+*/
+int nbr_noeud_totaux(Bibliotheque b)
+{
+    int i=0;
+    if(b!=NULL)
+    {
+        i+=1;
+        i+=nbr_noeud_totaux(b->fils_droit);
+        i+=nbr_noeud_totaux(b->fils_gauche);
+    }
+    return i;
 }
 
